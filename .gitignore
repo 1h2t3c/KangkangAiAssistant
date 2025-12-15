@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IntelliJ IDEA
+.idea/
+
+# Node.js dependencies
+node_modules/
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# VS Code
+.vscode/
+
+# Log files
+*.log
+
+# Database files
+*.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Spring Boot
+.mvn/wrapper/maven-wrapper.properties
+
+# Package lock files
+package-lock.json
+yarn.lock

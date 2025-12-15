@@ -1,0 +1,57 @@
+server:
+  port: 8080
+langchain4j:
+    #拉langchain4j远程大模型，可以在阿里云上拉取deepseek也可以直接拉取deepseek官网模型
+    open-ai:
+      chat-model:
+        base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+        #langchain4j测试模型
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: deepseek-v3
+        #请求和响应日志
+        log-requests: true
+        log-responses: true
+    #本地部署大模型
+    ollama:
+      chat-model:
+        base-url: http://localhost:11434
+        model-name: deepseek-r1:1.5b
+        log-requests: true
+        log-responses: true
+        temperature: 0.8
+    #拉dashscope阿里云远程大模型
+    community:
+      dashscope:
+        chat-model:
+          api-key: ${DASH_SCOPE_API_KEY}
+          model-name: qwen-turbo
+        #配置向量模型
+        #集成阿里通义千问-通用文本向量-v3
+        embedding-model:
+          api-key: ${DASH_SCOPE_API_KEY}
+          model-name: text-embedding-v3
+          #集成阿里通义千问-流式输出
+        streaming-chat-model:
+          api-key: ${DASH_SCOPE_API_KEY}
+          model-name: qwen-plus
+#启用日志debug级别
+logging:
+  level:
+#    root: debug
+    root: info
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chat_memory_db
+  datasource:
+    url: jdbc:mysql://localhost:3306/yiliaoxiaozhi?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #mapper.xml文件在resources目录下，需要做以下配置
+  mapper-locations: mapper/**/*.xml
+  #配置别名，不用传入包名.类名了
+  type-aliases-package: com.atguigu.java.ai.langchain4j.entity
